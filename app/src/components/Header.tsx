@@ -5,7 +5,6 @@ import Brightness7Icon from "@mui/icons-material/Brightness7";
 import MenuIcon from "@mui/icons-material/Menu";
 import {
   AppBar,
-  Avatar,
   Box,
   Button,
   Drawer,
@@ -18,9 +17,11 @@ import {
   useMediaQuery,
   useTheme as useMuiTheme,
 } from "@mui/material";
+import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
+import * as PSS from "../../public/PSS.png";
 import { useTheme } from "../context/ThemeContext";
 import { useAuth } from "../hooks/useAuth";
 
@@ -36,7 +37,7 @@ const Header: React.FC = () => {
   const navItems = [
     { label: "Home", path: "/dashboard" },
     { label: "Pantry", path: "/pantry" },
-    { label: "Settings", path: "/settings" },
+    { label: "Recipes", path: "/recipes" },
   ];
 
   const toggleDrawer =
@@ -98,9 +99,17 @@ const Header: React.FC = () => {
             </Drawer>
           </>
         )}
-        <Avatar sx={{ mr: 2 }}>ML</Avatar>
+        <Box sx={{ display: "flex", alignItems: "center", mr: 2 }}>
+          <Image
+            src={PSS}
+            alt="Pantry Stock Snap Logo"
+            width={40}
+            height={40}
+            style={{ borderRadius: "50%" }}
+          />
+        </Box>
         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-          My App
+          Pantry Stock Snap
         </Typography>
         <Box
           sx={{

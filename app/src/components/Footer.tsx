@@ -34,7 +34,7 @@ const Footer: React.FC = () => {
             color="text.secondary"
             sx={{ mb: { xs: 2, md: 0 } }}
           >
-            © {new Date().getFullYear()} My App. All rights reserved.
+            © {new Date().getFullYear()} Pantry Stock Snap. All rights reserved.
           </Typography>
           <Box sx={{ display: "flex", gap: 2 }}>
             <IconButton

@@ -2,7 +2,14 @@
 import { Button } from "@mui/material";
 import { getDownloadURL, getStorage, ref, uploadBytes } from "firebase/storage";
 import React from "react";
-import { PantryItem } from "../types";
+
+interface PantryItem {
+  id: string;
+  name: string;
+  quantity: number;
+  image: string;
+  expirationDate: string;
+}
 
 interface ImageUploadProps {
   item: Partial<PantryItem>;

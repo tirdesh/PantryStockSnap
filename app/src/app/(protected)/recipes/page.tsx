@@ -1,13 +1,10 @@
-// src/app/(protected)/pantry/page.tsx
-
+// src/pages/recipes/page.tsx
 "use client";
 
-import { Button, Container, Grid, Paper, Typography } from "@mui/material";
+import { Container, Grid, Paper, Typography } from "@mui/material";
 import { collection, getDocs } from "firebase/firestore";
-import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
-import PantryForm from "../../../components/pantry/PantryForm";
-import SearchBar from "../../../components/pantry/SearchBar";
+import RecipeSuggestions from "../../../components/pantry/RecipeSuggestions";
 import { db } from "../../../config/firebase";
 
 interface PantryItem {
@@ -18,10 +15,8 @@ interface PantryItem {
   expirationDate: string;
 }
 
-const PantryPage: React.FC = () => {
-  const [searchQuery, setSearchQuery] = useState("");
+const RecipesPage: React.FC = () => {
   const [pantryItems, setPantryItems] = useState<PantryItem[]>([]);
-  const router = useRouter();
 
   useEffect(() => {
     const fetchPantryItems = async () => {
@@ -36,14 +31,6 @@ const PantryPage: React.FC = () => {
     fetchPantryItems();
   }, []);
 
-  const handleSearch = (query: string) => {
-    setSearchQuery(query);
-  };
-
-  const handleGoToRecipes = () => {
-    router.push("/recipes");
-  };
-
   return (
     <Container component="main" maxWidth="lg">
       <Paper elevation={4} sx={{ padding: 3, borderRadius: 2, marginTop: 4 }}>
@@ -54,24 +41,11 @@ const PantryPage: React.FC = () => {
               variant="h4"
               sx={{ fontWeight: "bold", mb: 2 }}
             >
-              Pantry Items
+              Recipe Suggestions
             </Typography>
           </Grid>
-          <Grid item xs={12} md={4}>
-            <SearchBar onSearch={handleSearch} />
-          </Grid>
           <Grid item xs={12}>
-            <PantryForm searchQuery={searchQuery} />
-          </Grid>
-          <Grid item xs={12}>
-            <Button
-              variant="contained"
-              color="primary"
-              onClick={handleGoToRecipes}
-              sx={{ mt: 2 }}
-            >
-              Generate Recipe Suggestions
-            </Button>
+            <RecipeSuggestions pantryItems={pantryItems} />
           </Grid>
         </Grid>
       </Paper>
@@ -79,4 +53,4 @@ const PantryPage: React.FC = () => {
   );
 };
 
-export default PantryPage;
+export default RecipesPage;
