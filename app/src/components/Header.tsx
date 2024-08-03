@@ -35,7 +35,7 @@ const Header: React.FC = () => {
 
   const navItems = [
     { label: "Home", path: "/dashboard" },
-    { label: "Profile", path: "/profile" },
+    { label: "Pantry", path: "/pantry" },
     { label: "Settings", path: "/settings" },
   ];
 
