@@ -1,3 +1,4 @@
+// src/components/auth/SocialAuthButtons.tsx
 "use client";
 
 import { Google as GoogleIcon } from "@mui/icons-material";
@@ -26,7 +27,6 @@ const SocialAuthButtons: React.FC = () => {
       variant="outlined"
       startIcon={<GoogleIcon />}
       onClick={handleGoogleSignIn}
-      sx={{ mt: 2, mb: 2 }}
     >
       Sign In with Google
     </Button>

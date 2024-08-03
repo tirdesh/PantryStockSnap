@@ -1,6 +1,8 @@
+// src/components/auth/EmailPasswordForm.tsx
 "use client";
 
-import { Box, Button, TextField } from "@mui/material";
+import { Email as EmailIcon, Lock as LockIcon } from "@mui/icons-material";
+import { Box, Button, InputAdornment, TextField } from "@mui/material";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
@@ -79,6 +81,13 @@ const EmailPasswordForm: React.FC<EmailPasswordFormProps> = ({
         onChange={handleInputChange}
         error={!!formErrors.email}
         helperText={formErrors.email}
+        InputProps={{
+          startAdornment: (
+            <InputAdornment position="start">
+              <EmailIcon />
+            </InputAdornment>
+          ),
+        }}
       />
       <TextField
         margin="normal"
@@ -93,6 +102,13 @@ const EmailPasswordForm: React.FC<EmailPasswordFormProps> = ({
         onChange={handleInputChange}
         error={!!formErrors.password}
         helperText={formErrors.password}
+        InputProps={{
+          startAdornment: (
+            <InputAdornment position="start">
+              <LockIcon />
+            </InputAdornment>
+          ),
+        }}
       />
       <Button type="submit" fullWidth variant="contained" sx={{ mt: 3, mb: 2 }}>
         {isSignUp ? "Sign Up" : "Sign In"}
